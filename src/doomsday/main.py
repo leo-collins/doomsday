@@ -2,10 +2,10 @@ from doomsday import generate_random_date, is_day_of_week, anchor_day_century, a
 import click
 
 @click.command()
-@click.option("--hints", is_flag=True, default=False, help="Show explanation for the Doomsday algorithm.")
+@click.option("--explain", is_flag=True, default=False, help="Show explanation for the Doomsday algorithm.")
 @click.option("--repeat", is_flag=True, default=False, help="Repeat the game indefinitely.")
 @click.option("--proleptic", is_flag=True, default=False, help="Generate proleptic Gregorian dates (dates before 1583).")
-def doomsday_game(hints: bool, proleptic: bool, repeat: bool) -> None:
+def doomsday_game(explain: bool, proleptic: bool, repeat: bool) -> None:
     """
     Play the Doomsday game. Generates a random date and asks the user to guess the day of the week.
     """
@@ -26,7 +26,7 @@ def doomsday_game(hints: bool, proleptic: bool, repeat: bool) -> None:
         else:
             click.echo(click.style("Incorrect! ", fg="red"), nl=False)
         click.echo(f"{random_date.strftime('%d %B %Y')} is a {random_date.strftime("%A")}.")
-        if hints:
+        if explain:
             click.echo("---Explanation---")
             anchor_day_century(random_date, verbose=True)
             anchor_day_year(random_date, verbose=True)
