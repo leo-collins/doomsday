@@ -3,7 +3,7 @@ from doomsday import days
 
 days_reversed: dict[int, str] = {val: key for key, val in days.items()}
 
-def anchor_day_century(date: date) -> int:
+def anchor_day_century(date: date, verbose: bool = False) -> int:
     """Calculate the anchor day for the century of a given date.
 
     Args:
@@ -19,7 +19,10 @@ def anchor_day_century(date: date) -> int:
         raise ValueError("Date must be after 1582.")
     century = date.year // 100
     anchor_days = [1, 6, 4, 2]
-    return anchor_days[century % 4]
+    anchor_day = anchor_days[century % 4]
+    if verbose:
+        print(f"Century: {century * 100}, Century anchor day: {days_reversed[anchor_day]}")
+    return anchor_day
 
 def anchor_day_year(date: date, verbose: bool = False) -> int:
     """Calculates the doomsday for the year of a given date.
@@ -40,7 +43,7 @@ def anchor_day_year(date: date, verbose: bool = False) -> int:
         T += 11
         if verbose:
             print(f"T is odd, so we add 11 to T to get T = {T}")
-    T /= 2  # divide T by 2
+    T //= 2  # divide T by 2
     if verbose:
         print(f"Divide T by 2 to get T = {T}")
     # if T is odd, we add 11
@@ -55,7 +58,7 @@ def anchor_day_year(date: date, verbose: bool = False) -> int:
     century_anchor = anchor_day_century(date)
     doomsday = (century_anchor + T) % 7
     if verbose:
-        print(f"Add T to the anchor day of the century to get doomsday = {doomsday}")
+        print(f"Add T to the anchor day of the century to get doomsday is {days_reversed[doomsday]}")
     return doomsday
 
 
