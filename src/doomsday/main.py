@@ -12,11 +12,19 @@ days: dict[str, int] = {
     "Sunday": 6
 }
 
-def generate_random_date() -> date:
+def generate_random_date(proleptic: bool = True) -> date:
+    """Generates random date.
+
+    Args:
+        proleptic (bool, optional): If True, generates a proleptic Gregorian date, i.e. can be before 1582. Defaults to True.
+
+    Returns:
+        date: Random date.
     """
-    Generate a random date.
-    """
-    year = random.randint(1, 3000)
+    if proleptic:
+        year = random.randint(1, 3000)
+    else:
+        year = random.randint(1583, 3000)
     month = random.randint(1, 12)
     if month in [1, 3, 5, 7, 8, 10, 12]:
         day = random.randint(1, 31)
