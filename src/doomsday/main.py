@@ -3,7 +3,7 @@ import click
 
 @click.command()
 @click.option("--proleptic", is_flag=True, default=False, help="Generate proleptic Gregorian dates (dates before 1583).")
-@click.option("--repeat", is_flag=True, default=False, help="Repeat the game until the user decides to exit.")
+@click.option("--repeat", is_flag=True, default=False, help="Repeat the game indefinitely.")
 def doomsday_game(proleptic: bool, repeat: bool) -> None:
     """
     Play the Doomsday game. Generates a random date and asks the user to guess the day of the week.
@@ -14,7 +14,7 @@ def doomsday_game(proleptic: bool, repeat: bool) -> None:
         if repeat and i == 0:
             click.echo("Repeating indefinitely. Type 'exit' to exit the game.")
         random_date = generate_random_date(proleptic=proleptic)
-        weekday_guess: str = click.prompt(f"Date: {random_date.strftime("%d %B %Y")} (Enter day of the week)")
+        weekday_guess: str = click.prompt(f"Date: {random_date.strftime("%d %B %Y")} (Enter day of the week)", type=str)
         if weekday_guess == "exit":
             click.echo(f"You got {correct} / {i + 1} correct.")
             click.echo("Exiting the game.")
