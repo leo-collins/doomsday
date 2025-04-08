@@ -12,11 +12,11 @@ days: dict[str, int] = {
     "Sunday": 6
 }
 
-def generate_random_date(proleptic: bool = True) -> date:
+def generate_random_date(proleptic: bool = False) -> date:
     """Generates random date.
 
     Args:
-        proleptic (bool, optional): If True, generates a proleptic Gregorian date, i.e. can be before 1582. Defaults to True.
+        proleptic (bool, optional): If True, generates a proleptic Gregorian date, i.e. can be before 1583. Defaults to False.
 
     Returns:
         date: Random date.
