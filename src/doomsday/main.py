@@ -1,4 +1,4 @@
-from doomsday import generate_random_date, is_day_of_week, anchor_day_century, anchor_day_year
+from doomsday import generate_random_date, is_day_of_week, anchor_day_century, anchor_day_year, calculate_day
 import click
 
 @click.command()
@@ -30,6 +30,7 @@ def doomsday_game(explain: bool, proleptic: bool, repeat: bool) -> None:
             click.echo("---Explanation---")
             anchor_day_century(random_date, verbose=True)
             anchor_day_year(random_date, verbose=True)
+            calculate_day(random_date, verbose=True)
         if not repeat:
             break
         i += 1
