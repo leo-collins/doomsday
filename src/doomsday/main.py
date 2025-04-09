@@ -22,9 +22,11 @@ def doomsday_game(explain: bool, proleptic: bool, repeat: bool) -> None:
             break
         if is_day_of_week(random_date, weekday_guess):
             click.echo(click.style("Correct! ", fg="green"), nl=False)
+            print("")
             correct += 1
         else:
             click.echo(click.style("Incorrect! ", fg="red"), nl=False)
+            print("")
         click.echo(f"{random_date.strftime('%d %B %Y')} is a {random_date.strftime("%A")}.")
         if explain:
             click.echo("---Explanation---")
