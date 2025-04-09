@@ -112,30 +112,31 @@ def calculate_day(date: date, verbose: bool = False) -> int:
         if date.month in [1, 2]:
             memorable_date += 1
     if verbose:
+        print("")
         print(f"Step 3: Calculate the day")
-        print(f"Step 1) The doomsday for {months[date.month]} is {memorable_date} ({mnemonic}).")
+        print(f"1) The doomsday for {months[date.month]} is {memorable_date} ({mnemonic}).")
 
     if date.day > memorable_date:
         # if the day is greater than the doomsday, we count forward
         difference = date.day - memorable_date
         day_of_week = (year_doomsday + difference) % 7
         if verbose:
-            print(f"Step 2) The date is {difference} days after the doomsday.")
-            print(f"        We do doomsday + {difference} (mod 7) to get the day of the week.")
-            print(f"        The day of the week is therefore {year_doomsday} + {difference % 7} = {day_of_week}, which is a {days_reversed[day_of_week]}.")
+            print(f"2) The date is {difference} days after the doomsday.")
+            print(f"   We do doomsday + {difference} (mod 7) to get the day of the week.")
+            print(f"   The day of the week is therefore {year_doomsday} + {difference % 7} = {day_of_week}, which is a {days_reversed[day_of_week]}.")
         return day_of_week
     elif date.day < memorable_date:
         # if the day is less than the doomsday, we count backward
         difference = memorable_date - date.day
         day_of_week = (year_doomsday - difference) % 7
         if verbose:
-            print(f"Step 2) The date is {difference} days before the doomsday.")
-            print(f"        We do doomsday - {difference} (mod 7) to get the day of the week.")
-            print(f"        The day of the week is therefore {year_doomsday} - {difference % 7} = {day_of_week}, which is a {days_reversed[day_of_week]}.")
+            print(f"2) The date is {difference} days before the doomsday.")
+            print(f"   We do doomsday - {difference} (mod 7) to get the day of the week.")
+            print(f"   The day of the week is therefore {year_doomsday} - {difference % 7} = {day_of_week}, which is a {days_reversed[day_of_week]}.")
         return day_of_week
     else:
         # if the day is equal to the doomsday, we return the doomsday
         if verbose:
-            print(f"Step 2) The date is the same as the doomsday.")
-            print(f"        The day of the week is therefore {year_doomsday}, which is a {days_reversed[year_doomsday]}.")
+            print(f"2) The date is the same as the doomsday.")
+            print(f"   The day of the week is therefore {year_doomsday}, which is a {days_reversed[year_doomsday]}.")
         return year_doomsday
