@@ -6,7 +6,7 @@
 Clone the repo and install using `uv`:
 
 ```shell
-git clone ...
+git clone https://github.com/leo-collins/doomsday.git
 cd doomsday
 uv tool install .
 ```
@@ -16,5 +16,5 @@ uv tool install .
 Pass the `--editable` flag to install in editable mode:
 
 ```shell
-uv install --editable .
+uv tool install --editable .
 ```
