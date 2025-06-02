@@ -17,7 +17,7 @@ memorable_dates: dict[int, tuple[int, str]] = {
     11: (7, "Working 9-5 at 7-11"),
     12: (12, "4/4, 6/6, 8/8, 10/10, 12/12"),
 }
-months = {
+months: dict[int, str] = {
     1: "January",
     2: "February",
     3: "March",
