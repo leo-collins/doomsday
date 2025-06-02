@@ -17,7 +17,8 @@ def doomsday_game(explain: bool, proleptic: bool, repeat: bool) -> None:
         random_date = generate_random_date(proleptic=proleptic)
         weekday_guess: str = click.prompt(f"Date: {random_date.strftime("%d %B %Y")} (Enter day of the week)", type=str)
         if weekday_guess == "exit":
-            click.echo(f"You got {correct} / {i + 1} correct.")
+            if i > 0:
+                click.echo(f"You got {correct} / {i + 1} correct.")
             click.echo("Exiting the game.")
             break
         if is_day_of_week(random_date, weekday_guess):
